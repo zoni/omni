@@ -1,0 +1,11 @@
+{
+	"/": "index",
+	"/signup": {
+		"get": "signup",
+		"post": "signupPost"
+	},
+	"/login": {
+		"get": "login",
+		"post": "loginPost"
+	}
+}

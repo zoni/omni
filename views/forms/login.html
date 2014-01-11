@@ -1,0 +1,15 @@
+{% extends "../layouts/default.html" %}
+
+{% block content %}
+<form method="post" action="{{ action }}">
+	{% if error %}
+		<p>{{ error }}</p>
+	{% endif %}
+	<fieldset>
+		<input type="email" name="email" placeholder="E-mail">
+		<input type="password" name="password" placeholder="Password">
+		<input type="submit" value="Login">
+	</fieldset>
+</form>
+{% endblock %}
+
