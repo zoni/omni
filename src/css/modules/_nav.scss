@@ -1,0 +1,31 @@
+nav {
+	ul {
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		float: left;
+	}
+	a {
+		display: block;
+		padding: 0 9px;
+		border-radius: 3px;
+		color: #fff;
+		text-decoration: none;
+		@include transition(background-color .1s ease-in-out);
+	}
+	.active a, a:hover {
+		background: #666;
+	}
+}
+
+.nav-primary {
+	float: left;
+}
+
+.nav-user {
+	float: right;
+}
+

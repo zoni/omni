@@ -2,11 +2,31 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Omni</title>
+		<title>{{ title }}</title>
+		{% block headtags %}
+			<link rel="stylesheet" href="/css/omni.css">
+		{% endblock %}
 	</head>
 
 	<body>
-		{% block content %}{% endblock %}
+		<header class="header-main">
+			<div class="wrap">
+				<nav class="nav-primary">
+					<ul>
+						<li><a href="/users/">Users</a></li>
+						<li><a href="/roles/">Roles</a></li>
+					</ul>
+				</nav>
+				<nav class="nav-user">
+					<ul>
+						<li><a href="/logout/">Log out</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="wrap">
+			{% block content %}{% endblock %}
+		</div>
 	</body>
 </html>
 

@@ -15,6 +15,7 @@ var app = express()
 	.engine('html', cons.swig)
 	.set('view engine', 'html')
 	.set('views', __dirname + '/views')
+	.use(express.static(__dirname + '/public'))
 	.use(express.bodyParser())
 	.use(express.cookieParser())
 	.use(express.session({
@@ -22,6 +23,10 @@ var app = express()
 		secret: 'my_secret_string',
 		key: 'omni'
 	}));
+
+app.locals({
+	title: 'Omni'
+});
 
 if (app.settings.env == 'development'){
 	swig.setDefaults({cache: false});
