@@ -7,7 +7,9 @@ if (process.cwd() != __dirname){
 var express = require('express'),
 	swig = require('swig'),
 	cons = require('consolidate'),
-	argv = require('optimist').argv;
+	argv = require('optimist').argv,
+	connect = require('connect'),
+	RedisStore = require('connect-redis')(connect);
 
 var app = express()
 	.engine('html', cons.swig)
@@ -16,6 +18,7 @@ var app = express()
 	.use(express.bodyParser())
 	.use(express.cookieParser())
 	.use(express.session({
+		store: new RedisStore(),
 		secret: 'my_secret_string',
 		key: 'omni'
 	}));

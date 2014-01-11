@@ -9,6 +9,8 @@
 	"main": "app.js",
 	"dependencies": {
 		"bcrypt": "0.7",
+		"connect": "2.12",
+		"connect-redis": "1.4",
 		"consolidate": "0.9",
 		"express": "3.4",
 		"mongodb": "1.3",
