@@ -1,2 +1,4 @@
 Gruntfile.js
-public/**
+public/*
+src/*
+views/*
