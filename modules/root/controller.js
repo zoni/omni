@@ -92,11 +92,20 @@ var loginPost = function(req, res){
 	});
 };
 
+/**
+ *
+ */
+var logout = function(req, res){
+	delete req.session.user;
+	res.redirect('/');
+};
+
 module.exports = {
 	index: index,
 	signup: signup,
 	signupPost: signupPost,
 	login: login,
-	loginPost: loginPost
+	loginPost: loginPost,
+	logout: logout
 };
 
