@@ -1,0 +1,23 @@
+{% extends "../../../views/layouts/default.html" %}
+
+{% block content %}
+<h2>Create new user</h2>
+<form method="post" action="{{ action }}">
+	<fieldset>
+		<ul>
+			<li>
+				<label>Email</label>
+				<input type="email">
+			</li>
+			<li>
+				<label>Password</label>
+				<input type="password">
+			</li>
+			<li>
+				<input type="submit" value="Create">
+			</li>
+		</ul>
+	</fieldset>
+</form>
+{% endblock %}
+
