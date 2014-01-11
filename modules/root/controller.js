@@ -10,7 +10,7 @@ var index = function(req, res){
 		view = 'index';
 
 	if (!req.session.user){
-		locals = {action: '/login'};
+		locals = {action: '/login/'};
 		view = 'forms/login';
 	}
 
@@ -26,7 +26,7 @@ var signup = function(req, res){
 		return;
 	}
 
-	var locals = {action: '/signup'},
+	var locals = {action: '/signup/'},
 		view = 'forms/signup';
 	res.render(view, locals);
 };
@@ -43,7 +43,7 @@ var signupPost = function(req, res){
 	userLib.signup(req.body.email, req.body.password, function(err){
 		if (err){
 			var locals = {
-				action: '/signup',
+				action: '/signup/',
 				error: err.message
 			};
 			res.render('forms/signup', locals);
@@ -63,7 +63,7 @@ var login = function(req, res){
 		return;
 	}
 
-	var locals = {action: '/login'},
+	var locals = {action: '/login/'},
 		view = 'forms/login';
 	res.render(view, locals);
 };
@@ -80,7 +80,7 @@ var loginPost = function(req, res){
 	userLib.login(req.body.email, req.body.password, function(err, user){
 		if (err){
 			var locals = {
-				action: '/signup',
+				action: '/signup/',
 				error: err.message
 			};
 			res.render('forms/signup', locals);
