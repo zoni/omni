@@ -83,7 +83,7 @@ var loginPost = function(req, res){
 				action: '/signup/',
 				error: err.message
 			};
-			res.render('forms/signup', locals);
+			res.render('forms/login', locals);
 			return;
 		}
 
