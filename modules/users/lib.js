@@ -2,7 +2,7 @@
 
 var client = require('mongodb').MongoClient,
 	bcrypt = require('bcrypt'),
-	config = require('./../../lib/config')('/modules/users/config.json'),
+	config = require('./../../lib/config')(__dirname + '/config.json'),
 	User = require('./model');
 
 /**
