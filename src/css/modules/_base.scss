@@ -12,6 +12,37 @@ th {
 	text-align: left;
 }
 
+h2 {
+	font-weight: 300;
+}
+
+select {
+	padding: 0 6px;
+	border: 1px solid #ccc;
+	box-shadow: inset 1px 1px 1px #fafafa;
+	background: #fff;
+	font-weight: inherit;
+}
+
+input {
+	&[type='email'],
+	&[type='password'],
+	&[type='text'] {
+		padding: 0 6px;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		box-shadow: inset 1px 1px 1px #fafafa;
+		background: #fff;
+		font-weight: inherit;
+		&:focus {
+			border-color: #aaa;
+			outline: 0;
+			background: #fbfbfb;
+		}
+	}
+}
+
+
 .wrap {
 	max-width: 1200px;
 	margin: 0 auto;

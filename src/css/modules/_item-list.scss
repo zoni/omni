@@ -1,4 +1,15 @@
 .item-list {
 	width: 100%;
+	th, td {
+		padding: 0;
+		border-bottom: 1px solid #ccc;
+		line-height: 36px;
+		&:first-child {
+			width: 20px;
+		}
+	}
+	.empty-set {
+		text-align: center;
+	}
 }
 
