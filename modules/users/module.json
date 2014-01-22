@@ -1,0 +1,31 @@
+{
+	"name": "Users",
+	"description": "",
+	"routes": {
+		"/": "list",
+		"/add/": {
+			"get": "form"
+		},
+		"/edit/:id/": {
+			"get": "form"
+		},
+		"/view/:id/": {
+			"get": "detail"
+		}
+	},
+	"fields": [
+		{
+			"type": "email",
+			"name": "email",
+			"label": "Email",
+			"required": true,
+			"unique": true
+		},
+		{
+			"type": "password",
+			"name": "password",
+			"label": "Password",
+			"required": true
+		}
+	]
+}

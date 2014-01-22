@@ -1,9 +1,11 @@
 'use strict';
 
-var userLib = require('./../users/lib');
+var auth = require('./../auth/lib'),
+	userModel = require('./../users/model');
 
 /**
- *
+ * @param {Object} req
+ * @param {Object} res
  */
 var index = function(req, res){
 	var locals = {},
@@ -18,7 +20,8 @@ var index = function(req, res){
 };
 
 /**
- *
+ * @param {Object} req
+ * @param {Object} res
  */
 var signup = function(req, res){
 	if (req.session.user){
@@ -32,7 +35,8 @@ var signup = function(req, res){
 };
 
 /**
- *
+ * @param {Object} req
+ * @param {Object} res
  */
 var signupPost = function(req, res){
 	if (!req.body.email || !req.body.password){
@@ -40,7 +44,7 @@ var signupPost = function(req, res){
 		return;
 	}
 
-	userLib.signup(req.body.email, req.body.password, function(err){
+	userModel.signup(req.body.email, req.body.password, function(err){
 		if (err){
 			var locals = {
 				action: '/signup/',
@@ -55,7 +59,8 @@ var signupPost = function(req, res){
 };
 
 /**
- *
+ * @param {Object} req
+ * @param {Object} res
  */
 var login = function(req, res){
 	if (req.session.user){
@@ -69,7 +74,8 @@ var login = function(req, res){
 };
 
 /**
- *
+ * @param {Object} req
+ * @param {Object} res
  */
 var loginPost = function(req, res){
 	if (!req.body.email || !req.body.password){
@@ -77,10 +83,10 @@ var loginPost = function(req, res){
 		return;
 	}
 
-	userLib.login(req.body.email, req.body.password, function(err, user){
+	auth.byPassword(req.body.email, req.body.password, function(err, user){
 		if (err){
 			var locals = {
-				action: '/signup/',
+				action: '/login/',
 				error: err.message
 			};
 			res.render('forms/login', locals);
@@ -93,7 +99,8 @@ var loginPost = function(req, res){
 };
 
 /**
- *
+ * @param {Object} req
+ * @param {Object} res
  */
 var logout = function(req, res){
 	delete req.session.user;

@@ -1,0 +1,27 @@
+{% extends "../../../views/layouts/default.html" %}
+
+{% block content %}
+<h2>Users</h2>
+<table class="item-list">
+	<thead>
+		<tr>
+			<th><input type="checkbox"></th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in items %}
+			<tr>
+				<td><input type="checkbox"></td>
+				<td><a href="/users/edit/{{ item._id }}/">{{ item.email }}</a></td>
+			</tr>
+		{% endfor %}
+		{% if !items.length %}
+			<tr class="empty-set">
+				<td colspan="2">No users found, would you like to <a href="/users/add/">add one</a>?</td>
+			</tr>
+		{% endif %}
+	</tbody>
+</table>
+{% endblock %}
+
