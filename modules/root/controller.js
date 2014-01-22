@@ -40,7 +40,11 @@ var signup = function(req, res){
  */
 var signupPost = function(req, res){
 	if (!req.body.email || !req.body.password){
-		console.log('Email or password missing');
+		var locals = {
+			action: '/signup/',
+			error: 'Email or password missing'
+		};
+		res.render('forms/signup', locals);
 		return;
 	}
 
@@ -79,7 +83,11 @@ var login = function(req, res){
  */
 var loginPost = function(req, res){
 	if (!req.body.email || !req.body.password){
-		console.log('Email or password missing');
+		var locals = {
+			action: '/login/',
+			error: 'Email or password missing'
+		};
+		res.render('forms/login', locals);
 		return;
 	}
 
