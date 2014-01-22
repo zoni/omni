@@ -6,10 +6,11 @@
 		<p>{{ error }}</p>
 	{% endif %}
 	<fieldset>
-		<input type="email" name="email" placeholder="E-mail">
+		<input type="email" name="email" placeholder="E-mail" autofocus>
 		<input type="password" name="password" placeholder="Password">
 		<input type="submit" value="Sign up">
 	</fieldset>
 </form>
+<p>Already have an account? <a href="/login/">Log in</a>.</p>
 {% endblock %}
 
