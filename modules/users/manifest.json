@@ -1,4 +1,5 @@
 {
+	"slug": "users",
 	"name": "Users",
 	"description": "",
 	"routes": {
