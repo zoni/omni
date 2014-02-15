@@ -161,4 +161,3 @@ module.exports = {
 	remove: remove,
 	signup: signup
 };
-

@@ -65,4 +65,3 @@ module.exports = {
 	form: form,
 	detail: detail
 };
-

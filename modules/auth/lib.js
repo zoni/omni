@@ -51,4 +51,3 @@ var byPassword = function(email, password, fn){
 module.exports = {
 	byPassword: byPassword
 };
-

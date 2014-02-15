@@ -24,4 +24,3 @@ User.prototype.getPublicData = function(){
 };
 
 module.exports = User;
-

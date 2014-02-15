@@ -123,4 +123,3 @@ module.exports = {
 	loginPost: loginPost,
 	logout: logout
 };
-
