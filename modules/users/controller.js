@@ -2,7 +2,7 @@
 
 var model = require('./model'),
 	Fields = require('./../../lib/fields'),
-	moduleDefinition = require('./../../lib/parseJSONFile')(__dirname + '/module.json');
+	manifest = require('./../../lib/parseJSONFile')(__dirname + '/manifest.json');
 
 var views = {
 	list: __dirname + '/views/list',
@@ -27,7 +27,7 @@ var list = function(req, res){
  * @param {Object} res
  */
 var form = function(req, res){
-	var fields = new Fields(moduleDefinition.fields);
+	var fields = new Fields(manifest.fields);
 	if (req.params.id){
 		model.read({_id: req.params.id}, function(err, item){
 			if (err || !item){
