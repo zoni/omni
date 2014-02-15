@@ -19,33 +19,27 @@ var byPassword = function(email, password, fn){
 
 	client.connect(config.db, function(err, db){
 		if (err){
-			console.log('Failed to connect to MongoDB');
-			fn(new Error('Failed to connect to MongoDB'));
-			return;
+			return fn(new Error('Failed to connect to MongoDB'));
 		}
 
 		var collection = db.collection('user');
 		collection.findOne({email: email}, function(err, doc){
 			db.close();
 			if (err){
-				fn(new Error('Failed to query collection'));
-				return;
+				return fn(new Error('Failed to query collection'));
 			}
 
 			if (!doc){
-				fn(new Error('Could not find user with that email'));
-				return;
+				return fn(new Error('Could not find user with that email'));
 			}
 
 			bcrypt.compare(password, doc.password, function(err, equal){
 				if (err){
-					fn(new Error('Failed to do bcrypt compare'));
-					return;
+					return fn(new Error('Failed to do bcrypt compare'));
 				}
 
 				if (!equal){
-					fn(new Error('Incorrect password'));
-					return;
+					return fn(new Error('Incorrect password'));
 				}
 
 				fn(null, new User(doc));
