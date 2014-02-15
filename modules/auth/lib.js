@@ -3,7 +3,7 @@
 var client = require('mongodb').MongoClient,
 	bcrypt = require('bcrypt'),
 	config = require('./../../lib/config')(process.cwd() + '/config.json'),
-	User = require('./../users/entity');
+	User = require('./../user/entity');
 
 /**
  * Authenticate by email and password

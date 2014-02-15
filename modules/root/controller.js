@@ -1,7 +1,7 @@
 'use strict';
 
 var auth = require('./../auth/lib'),
-	userModel = require('./../users/model');
+	userModel = require('./../user/model');
 
 /**
  * @param {Object} req
