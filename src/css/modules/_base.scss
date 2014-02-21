@@ -16,15 +16,20 @@ h2 {
 	font-weight: 300;
 }
 
+fieldset {
+	padding: 12px;
+}
+
 select {
 	padding: 0 6px;
 	border: 1px solid #ccc;
 	box-shadow: inset 1px 1px 1px #fafafa;
 	background: #fff;
-	font-weight: inherit;
+	font: inherit;
 }
 
 input {
+	&:not([type]),
 	&[type='email'],
 	&[type='password'],
 	&[type='text'] {
@@ -33,12 +38,27 @@ input {
 		border-radius: 2px;
 		box-shadow: inset 1px 1px 1px #fafafa;
 		background: #fff;
-		font-weight: inherit;
+		font: inherit;
 		&:focus {
 			border-color: #aaa;
 			outline: 0;
-			background: #fbfbfb;
+			background: #fdfdfd;
 		}
+	}
+}
+
+textarea {
+	height: 100px;
+	padding: 0 6px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	box-shadow: inset 1px 1px 1px #fafafa;
+	background: #fff;
+	font: inherit;
+	&:focus {
+		border-color: #aaa;
+		outline: 0;
+		background: #fdfdfd;
 	}
 }
 
