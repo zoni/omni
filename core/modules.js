@@ -4,7 +4,8 @@ var fs = require('fs'),
 	path = require('path'),
 	isString = require('mout/lang/isString'),
 	isFunction = require('mout/lang/isFunction'),
-	forOwn = require('mout/object/forOwn');
+	forOwn = require('mout/object/forOwn'),
+	app = require('./app');
 
 var requiredFiles = ['manifest.json', 'controller.js'];
 
@@ -12,15 +13,14 @@ var requiredFiles = ['manifest.json', 'controller.js'];
  * Load modules from given directory
  *
  * It will apply each module's routes based on the specification found in
- * routes.json. It will also check if the methods that are referred to exist
+ * manifest.json. It will also check if the methods that are referred to exist
  *
- * @param {Object} app An object that listens to http verb methods
  * @param {String} dir
  */
-var load = function(app, modulesPath){
+var load = function(modulesPath){
 	modulesPath = path.normalize(modulesPath);
 	if (!fs.existsSync(modulesPath)){
-		throw new Error('Cannot load modules from path', modulesPath);
+		throw new Error('Cannot load modules from path ' + modulesPath);
 	}
 
 	var modules = fs.readdirSync(modulesPath);
