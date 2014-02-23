@@ -8,6 +8,61 @@ var client = require('mongodb').MongoClient,
 	config = parseJSON(process.cwd() + '/config.json');
 
 /**
+ * @param {Object} data
+ * @param {Function} fn
+ */
+var save = function(data, fn){
+	if (!data.email || !data.password){
+		fn(new Error('E-mail or password not provided'));
+		return;
+	}
+
+	if (!/[^@]+@[^.]+(.[^.]+)+/.test(data.email)){
+		fn(new Error('Email not valid'));
+		return;
+	}
+
+	client.connect(config.db, function(err, db){
+		if (err){
+			console.log('Failed to connect to MongoDB');
+			return fn(new Error('Failed to connect to MongoDB'));
+		}
+
+		var collection = db.collection('user');
+		collection.findOne({email: data.email}, function(err, doc){
+			if (err){
+				db.close();
+				return fn(new Error('Failed to query collection'));
+			}
+
+			if (doc){
+				db.close();
+				return fn(new Error('E-mail is already registered'));
+			}
+
+			bcrypt.hash(data.password, 10, function(err, hash){
+				if (err){
+					db.close();
+					return fn(new Error('Failed to hash password'));
+				}
+
+				var doc = {
+					email: data.email,
+					password: hash
+				};
+				collection.insert(doc, function(err){
+					db.close();
+					if (err){
+						return fn(new Error('Failed to insert document into MongoDB'));
+					}
+					fn(null, doc);
+				});
+			});
+		});
+	});
+};
+
+/**
  * @param {Object} query
  * @param {Function} fn
  */
@@ -37,66 +92,6 @@ var find = function(query, fn){
 			}
 
 			fn(null, docs);
-		});
-	});
-};
-
-/**
- * @param {Object} data
- * @param {Function} fn
- */
-var save = function(data, fn){
-	if (!data.email || !data.password){
-		fn(new Error('E-mail or password not provided'));
-		return;
-	}
-
-	if (!/[^@]+@[^.]+(.[^.]+)+/.test(data.email)){
-		fn(new Error('Email not valid'));
-		return;
-	}
-
-	client.connect(config.db, function(err, db){
-		if (err){
-			console.log('Failed to connect to MongoDB');
-			fn(new Error('Failed to connect to MongoDB'));
-			return;
-		}
-
-		var collection = db.collection('user');
-		collection.findOne({email: data.email}, function(err, doc){
-			if (err){
-				db.close();
-				fn(new Error('Failed to query collection'));
-				return;
-			}
-
-			if (doc){
-				db.close();
-				fn(new Error('E-mail is already registered'));
-				return;
-			}
-
-			bcrypt.hash(data.password, 10, function(err, hash){
-				if (err){
-					db.close();
-					fn(new Error('Failed to hash password'));
-					return;
-				}
-
-				var doc = {
-					email: data.email,
-					password: hash
-				};
-				collection.insert(doc, function(err){
-					db.close();
-					if (err){
-						fn(new Error('Failed to insert document into MongoDB'));
-						return;
-					}
-					fn(null, doc);
-				});
-			});
 		});
 	});
 };
@@ -155,8 +150,8 @@ var signup = function(email, password, fn){
 };
 
 module.exports = {
-	find: find,
 	save: save,
+	find: find,
 	read: read,
 	remove: remove,
 	signup: signup

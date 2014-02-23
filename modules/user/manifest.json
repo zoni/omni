@@ -5,28 +5,45 @@
 	"routes": {
 		"/": "list",
 		"/add/": {
-			"get": "form"
+			"get": "form",
+			"post": "formPost"
 		},
 		"/edit/:id/": {
-			"get": "form"
+			"get": "form",
+			"post": "formPost"
 		},
 		"/view/:id/": {
 			"get": "detail"
 		}
 	},
-	"fields": [
-		{
-			"type": "email",
-			"name": "email",
-			"label": "Email",
-			"required": true,
-			"unique": true
+	"fields": {
+		"pages": [
+			{
+				"name": "Credentials",
+				"groups": ["group1"]
+			}
+		],
+
+		"groups": {
+			"group1": {
+				"fields": ["email", "password"]
+			}
 		},
-		{
-			"type": "password",
-			"name": "password",
-			"label": "Password",
-			"required": true
+
+		"fields": {
+			"email": {
+				"type": "email",
+				"name": "email",
+				"label": "Email",
+				"required": true,
+				"unique": true
+			},
+			"password": {
+				"type": "password",
+				"name": "password",
+				"label": "Password",
+				"required": true
+			}
 		}
-	]
+	}
 }

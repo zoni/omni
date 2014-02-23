@@ -1,3 +1,4 @@
+{%- block header %}
 <!doctype html>
 <html lang="en">
 	<head>
@@ -10,21 +11,26 @@
 
 	<body>
 		<header class="header-main">
-			<div class="wrap">
-				<nav class="nav-primary">
-					<ul>
-						<li><a href="/users/">Users</a></li>
-					</ul>
-				</nav>
-				<nav class="nav-user">
-					<ul>
-						<li><a href="/logout/">Log out</a></li>
-					</ul>
-				</nav>
-			</div>
+			<nav class="nav-primary">
+				<ul>
+					<li><a href="/users/" class="icn-users">Users</a></li>
+				</ul>
+			</nav>
+			<nav class="nav-user">
+				<ul>
+					<li><a href="/logout/">Log out</a></li>
+				</ul>
+			</nav>
 		</header>
-		<div class="wrap">
+		<section class="body">
+			<div class="wrap">
+{% endblock %}
 			{% block content %}{% endblock %}
-		</div>
+{% block footer -%}
+			</div>
+		</section>
+
+		<script src="/js/omni.js"></script>
 	</body>
 </html>
+{% endblock %}

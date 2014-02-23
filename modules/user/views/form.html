@@ -1,18 +1,15 @@
 {% extends "../../../views/layouts/default.html" %}
 
+{% block header %}
+	{% if !inModal %}{% parent %}{% endif %}
+{% endblock %}
+{% block footer %}
+	{% if !inModal %}{% parent %}{% endif %}
+{% endblock %}
+
 {% block content %}
 <h2>Add new user</h2>
-<form method="post" action="{{ action }}" class="item-form">
-	<fieldset>
-		<ul>
-			{% for field in fields %}
-				<li>
-					{{ field.label|safe }}
-					{{ field.input|safe }}
-				</li>
-			{% endfor %}
-		</ul>
-	</fieldset>
-	<input type="submit" value="Save">
-</form>
+<div data-informal>
+	<script type="application/json" data-informal-spec>{{ formData|json|safe }}</script>
+</div>
 {% endblock %}

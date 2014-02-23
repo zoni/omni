@@ -16,7 +16,7 @@ module.exports = function(grunt){
 		mkdir: {
 			all: {
 				options: {
-					create: ['public/css/']
+					create: ['public/css/', 'public/js']
 				}
 			}
 		},
@@ -39,6 +39,27 @@ module.exports = function(grunt){
 					'src/css/*.scss', 'src/css/**/*.scss'
 				],
 				tasks: ['sass:dev']
+			},
+			js: {
+				files: [
+					'src/js/*.js',
+					'src/js/**/*.js',
+					'src/js/**/**/*.js',
+					'node_modules/informal/*.js',
+					'node_modules/informal/**/*.js'
+				],
+				tasks: ['wrapup:dev']
+			}
+		},
+
+		wrapup: {
+			dev: {
+				requires: {
+					'./src/js/omni.js': true
+				},
+				options: {
+					'output': './public/js/omni.js'
+				}
 			}
 		}
 	});
@@ -48,6 +69,12 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-mkdir');
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-sass');
-	grunt.registerTask('default', ['mkdir', 'sass:dev', 'concurrent:dev']);
-};
+	grunt.loadNpmTasks('grunt-wrapup');
 
+	grunt.registerTask('default', [
+		'mkdir',
+		'sass:dev',
+		'wrapup:dev',
+		'concurrent:dev'
+	]);
+};

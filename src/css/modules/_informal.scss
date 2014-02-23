@@ -1,33 +1,25 @@
-.item-form {
-	fieldset {
-		margin: 0;
-		padding: 0;
-		border: 0;
-	}
-	ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	li {
-		margin-top: 6px;
-		&:first-child {
-			margin-top: 0;
+.informal {
+	.pages {
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li {
+			margin-top: 6px;
+			&:first-child {
+				margin-top: 0;
+			}
 		}
 	}
 	label {
 		display: inline-block;
-		width: 150px;
+		width: 20%;
 		line-height: 30px;
-	}
-	input, select, textarea {
-		&.error {
-			border: 1px solid red;
-		}
 	}
 	select {
 		display: inline-block;
-		width: 30%;
+		width: 40%;
 		height: 30px;
 		line-height: 28px;
 	}
@@ -36,12 +28,15 @@
 		&[type='password'],
 		&[type='text'] {
 			display: inline-block;
-			width: 30%;
+			width: 40%;
 			height: 30px;
 			line-height: 28px;
 		}
 		&[type='submit'], &[type='checkbox'], &[type='radio'] {
 			width: auto;
 		}
+	}
+	textarea {
+		width: 40%;
 	}
 }
