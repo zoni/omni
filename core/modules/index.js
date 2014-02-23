@@ -5,9 +5,10 @@ var fs = require('fs'),
 	isString = require('mout/lang/isString'),
 	isFunction = require('mout/lang/isFunction'),
 	forOwn = require('mout/object/forOwn'),
-	app = require('./app');
+	app = require('../app');
 
-var requiredFiles = ['manifest.json', 'controller.js'];
+var requiredFiles = ['manifest.json', 'controller.js'],
+	modulePaths = {};
 
 /**
  * Load modules from given directory
@@ -39,6 +40,8 @@ var load = function(modulesPath){
 			}
 		}
 
+		modulePaths[moduleName] = modulePath;
+
 		try {
 			manifest = JSON.parse(fs.readFileSync(modulePath + '/manifest.json'));
 		} catch(e){
@@ -67,6 +70,15 @@ var load = function(modulesPath){
 	});
 };
 
+/**
+ * Find the path to a module by name
+ * @param {String} name
+ */
+var find = function(name){
+	return modulePaths[name];
+};
+
 module.exports = {
-	load: load
+	load: load,
+	find: find
 };

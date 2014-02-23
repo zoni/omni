@@ -1,7 +1,7 @@
 'use strict';
 
 var merge = require('mout/object/merge'),
-	manifest = require('./../../lib/parseJSONFile')(__dirname + '/manifest.json'),
+	manifest = require('../../../lib/parseJSONFile')(__dirname + '/manifest.json'),
 	model = require('./model'),
 	views = {
 		list: __dirname + '/views/list',

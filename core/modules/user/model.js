@@ -4,7 +4,7 @@ var client = require('mongodb').MongoClient,
 	ObjectID = require('mongodb').ObjectID,
 	bcrypt = require('bcrypt'),
 	isFunction = require('mout/lang/isFunction'),
-	parseJSON = require('./../../lib/parseJSONFile'),
+	parseJSON = require('../../../lib/parseJSONFile'),
 	config = parseJSON(process.cwd() + '/config.json');
 
 /**
