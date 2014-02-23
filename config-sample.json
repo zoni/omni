@@ -1,3 +1,4 @@
 {
-	"db": "mongodb://127.0.0.1:27017/omni"
+	"db": "mongodb://127.0.0.1:27017/omni",
+	"modulePaths": []
 }
