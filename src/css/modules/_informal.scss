@@ -39,4 +39,21 @@
 	textarea {
 		width: 40%;
 	}
+	.field-location {
+		position: relative;
+		.map-search {
+			margin: 6px;
+			font: $base-font-weight $font-size-base $base-font-family;
+			line-height: $base-line-height;
+		}
+		.map-canvas {
+			height: 300px;
+			margin: 0 0 9px;
+		}
+	}
+	.field-db-select {
+		a {
+			margin-left: 12px;
+		}
+	}
 }

@@ -8,10 +8,12 @@
 	"author": "Chiel Kunkels <chiel@kunkels.me>",
 	"main": "app.js",
 	"dependencies": {
+		"agent": "0.0.4",
 		"bcrypt": "0.7",
 		"connect": "2.12",
 		"connect-redis": "1.4",
 		"consolidate": "0.9",
+		"elements": "0.3",
 		"express": "3.4",
 		"informal": "0.0.4",
 		"mongodb": "1.3",

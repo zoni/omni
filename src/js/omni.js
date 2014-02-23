@@ -3,6 +3,9 @@
 var informal = require('informal'),
 	behaviors = require('./behavior');
 
+informal.registerField('db-select', require('./informal/fields/db-select'));
+informal.registerField('location', require('./informal/fields/location'));
+
 behaviors.register('data-informal', function(el){
 	var spec = el.querySelector('[data-informal-spec]');
 	if (!spec) return;
