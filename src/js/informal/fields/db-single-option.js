@@ -1,6 +1,6 @@
 'use strict';
 
-var FieldBase = require('informal').bases.Field,
+var FieldSingleOption = require('informal').fields.SingleOption,
 	agent = require('agent'),
 	bind = require('mout/function/bind'),
 	zen = require('elements/zen'),
@@ -12,35 +12,23 @@ var FieldBase = require('informal').bases.Field,
  * @param {object} spec
  * @param {mixed} value
  */
-var FieldDbSelect = function(spec, value){
-	if (!(this instanceof FieldDbSelect)){
-		return new FieldDbSelect(spec, value);
+var FieldDbSingleOption = function(spec, value){
+	if (!(this instanceof FieldDbSingleOption)){
+		return new FieldDbSingleOption(spec, value);
 	}
-	FieldBase.call(this, spec, value);
+	FieldSingleOption.call(this, spec, value);
 };
 
-FieldDbSelect.prototype = Object.create(FieldBase.prototype);
-FieldDbSelect.prototype.constructor = FieldDbSelect;
+FieldDbSingleOption.prototype = Object.create(FieldSingleOption.prototype);
+FieldDbSingleOption.prototype.constructor = FieldDbSingleOption;
 
 /**
  * Build up all elements of the field
  */
-FieldDbSelect.prototype.build = function(){
+FieldDbSingleOption.prototype.build = function(){
 	if (this.wrap) return;
-
-	this.wrap = zen('li.field-db-select');
-	zen('label').text(this.spec.label || '').insert(this.wrap);
-	this.input = zen('select').insert(this.wrap);
-
-	zen('option').value('').text('...').insert(this.input);
-
-	if (this.spec.options){
-		var i, len = this.spec.options.length, option;
-		for (i = 0; i < len; i++){
-			option = this.spec.options[i];
-			zen('option').value(option.value).text(option.label).insert(this.input);
-		}
-	}
+	FieldSingleOption.prototype.build.call(this);
+	this.wrap.addClass('field-db-single-option');
 
 	if (this.spec.addUrl){
 		this.addLink = zen('a').href('#').text('Add new...').insert(this.wrap);
@@ -54,7 +42,7 @@ FieldDbSelect.prototype.build = function(){
 /**
  *
  */
-FieldDbSelect.prototype.openDialog = function(){
+FieldDbSingleOption.prototype.openDialog = function(){
 	var lbWrap = zen('div.lightbox-wrap'),
 		lbContent = zen('div.lightbox-content').insert(lbWrap);
 
@@ -73,4 +61,4 @@ FieldDbSelect.prototype.openDialog = function(){
 	}, this));
 };
 
-module.exports = FieldDbSelect;
+module.exports = FieldDbSingleOption;

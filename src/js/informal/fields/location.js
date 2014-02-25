@@ -1,6 +1,6 @@
 'use strict';
 
-var FieldBase = require('informal').bases.Field,
+var FieldBase = require('informal').fields.Base,
 	bind = require('mout/function/bind'),
 	zen = require('elements/zen');
 

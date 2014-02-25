@@ -3,7 +3,7 @@
 var informal = require('informal'),
 	behaviors = require('./behavior');
 
-informal.registerField('db-select', require('./informal/fields/db-select'));
+informal.registerField('db-single-option', require('./informal/fields/db-single-option'));
 informal.registerField('location', require('./informal/fields/location'));
 
 behaviors.register('data-informal', function(el){
