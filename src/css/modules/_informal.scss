@@ -22,9 +22,15 @@
 		width: 40%;
 		height: 30px;
 		line-height: 28px;
+		&[multiple] {
+			height: auto;
+		}
 	}
 	input {
+		&:not([type]),
+		&[type='date'],
 		&[type='email'],
+		&[type='number'],
 		&[type='password'],
 		&[type='text'] {
 			display: inline-block;
@@ -42,7 +48,7 @@
 	.field-location {
 		position: relative;
 		.map-search {
-			margin: 6px;
+			margin: 6px 0;
 			font: $base-font-weight $font-size-base $base-font-family;
 			line-height: $base-line-height;
 		}

@@ -20,17 +20,11 @@ fieldset {
 	padding: 12px;
 }
 
-select {
-	padding: 0 6px;
-	border: 1px solid #ccc;
-	box-shadow: inset 1px 1px 1px #fafafa;
-	background: #fff;
-	font: inherit;
-}
-
 input {
 	&:not([type]),
+	&[type='date'],
 	&[type='email'],
+	&[type='number'],
 	&[type='password'],
 	&[type='text'] {
 		padding: 0 6px;
@@ -44,6 +38,17 @@ input {
 			outline: 0;
 			background: #fdfdfd;
 		}
+	}
+}
+
+select {
+	padding: 0 6px;
+	border: 1px solid #ccc;
+	box-shadow: inset 1px 1px 1px #fafafa;
+	background: #fff;
+	font: inherit;
+	&[multiple] {
+		height: auto;
 	}
 }
 
@@ -63,11 +68,7 @@ textarea {
 }
 
 .body {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 50px;
+	margin-left: 50px;
 }
 
 .wrap {
